@@ -89,7 +89,7 @@
 		<script type="text/javascript">
 		$(function () {
 			$('.contentslider_link').on('click', function () {
-				$('#' + $(this).attr('target')).SlideContent($('#' + $(this).attr('element')), $(this).attr('position'), true, function (obj) {
+				$('#' + $(this).attr('target')).SlideContent($('#' + $(this).attr('element')), $(this).attr('position'), true, $('#duration_input').val(), 'swing', function (obj) {
 					$('#store').append(obj);
 				 });
 			}).first().trigger('click');

@@ -1,16 +1,16 @@
 var SlideContentInUse = false;
 
 (function($) {
-    $.fn.SlideContent = function(element, position, slideParentHeight, callback) {
+    $.fn.SlideContent = function(element, position, slideParentHeight, speed, easing, callback) {
         if (SlideContentInUse) {
             return;
         }
 
-		callback = (typeof(callback) != 'function')? function (elem) {} : callback;
-        slideParentHeight = (typeof(slideParentHeight) == 'undefined' || slideParentHeight == null)? true : slideParentHeight;
+		callback = callback || function (elem) {};
+        slideParentHeight = slideParentHeight || true;
         var that = this;
-        var speed = Math.abs(parseInt($('#duration_input').val()));
-        var easing = 'swing';
+        var speed = speed || 300;
+        var easing = easing || 'swing';
         element = $(element);
         var sibling = this.children();
 

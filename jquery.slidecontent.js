@@ -6,7 +6,9 @@ var SlideContentInUse = false;
             return;
         }
 
-		callback = callback || function (elem) {};
+		callback = callback || function (elem) {
+			$(elem).remove();
+		};
         slideParentHeight = slideParentHeight || true;
         var that = this;
         var speed = speed || 300;

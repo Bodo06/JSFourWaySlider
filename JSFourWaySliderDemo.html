@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Slide Test</title>
+
+		<style type="text/css">
+		a {
+			border: 1px solid grey;
+			padding: 5px;
+            text-decoration: underline;
+            color: #0000ee;
+            cursor: pointer;
+		}
+		
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+		
+		div.rounded {
+			-webkit-border-radius: 55x;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+		}
+		
+		.middle {
+			position: relative;
+			display: block;
+			margin: 0 auto;
+			width: 900px;
+			margin-top: 30px;
+		}
+		
+		.contentslider {
+			/* MUST define the following */
+            display: block;
+			width: 912px;
+			min-height: 212px;
+			height: auto;
+			overflow: hidden;
+
+            /* optional */
+			padding: 10px;
+			background: #EEE;
+			border: 1px solid black;
+		}
+		.contentslider_wrapper {
+            /* MUST define the following */
+			position: relative;
+			display: block;
+			width: 910px;
+			height: 210px;
+			overflow: hidden;
+
+            /* optional */
+			background-color: #FFF;
+			border: 1px solid black;
+		}
+		.contentslider_slides {
+            /* MUST define the following */
+			position: relative;
+			height: auto;
+			min-height: 100%;
+			margin-left: -2100px;
+			width: 4200px;
+
+            /* optional */
+			background-color: #FFF;
+		}
+		.contentslider_slide {
+            /* MUST define the following */
+			display: block;
+			width: 900px;
+			min-height: 200px;
+			height: auto;
+			margin: 0 auto;
+
+            /* optional */
+			padding: 5px;
+			background-color: #FFF;
+		}
+		</style>
+
+        <script src="./jquery.min.js"></script>
+        <script src="./jquery.slidecontent.js"></script>
+		
+		<script type="text/javascript">
+		$(function () {
+			$('.contentslider_link').on('click', function () {
+				$('#' + $(this).attr('target')).SlideContent($('#' + $(this).attr('element')), $(this).attr('position'), true, function (obj) {
+					$('#store').append(obj);
+				 });
+			}).first().trigger('click');
+		});
+		</script>
+
+	</head>
+	<body>
+		
+		<div class="contentslider middle">
+			<div class="contentslider_wrapper">
+				<div class="contentslider_slides"  id="slides_vertical">
+					<!-- content goes here -->
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="middle">
+			<a class="contentslider_link" target="slides_vertical" element="article1" position="left">GoTo Article 1 spawn left</a>&nbsp;
+			<a class="contentslider_link" target="slides_vertical" element="article2" position="right">GoTo Article 2 spawn right</a>&nbsp;
+			<a class="contentslider_link" target="slides_vertical" element="article3" position="left">GoTo Article 3 spawn left</a>&nbsp;
+			<a class="contentslider_link" target="slides_vertical" element="article4" position="right">GoTo Article 4 spawn right</a>&nbsp;
+			<br /><br />
+			<a class="contentslider_link" target="slides_vertical" element="article1" position="top">GoTo Article 1 spawn top</a>&nbsp;
+			<a class="contentslider_link" target="slides_vertical" element="article2" position="bottom">GoTo Article 2 spawn bottom</a>&nbsp;
+			<a class="contentslider_link" target="slides_vertical" element="article3" position="top">GoTo Article 3 spawn top</a>&nbsp;
+			<a class="contentslider_link" target="slides_vertical" element="article4" position="bottom">GoTo Article 4 spawn bottom</a>&nbsp;
+			<br /><br />
+			Effect duration (default 300): <input id="duration_input" value="300" />
+		</div>
+		<div style="visibility: hidden;width: 0px; height: 0px; overflow: hidden;" id="store">
+			<div class="contentslider_slide" id="article1">
+				<h2>
+					Article Number One
+				</h2>
+				<p>
+					Hendrerit tincidunt vero vel eorum claritatem. Soluta
+					legunt quod qui dolore typi. Vel dolore soluta qui odio
+					non. Sollemnes minim eorum feugiat nihil nobis. Gothica
+					dolor in legentis nihil quinta.
+				</p>
+				<p>
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis.
+				</p>
+			</div>
+			
+			<div class="contentslider_slide" id="article2">
+				<h2>
+					Article Number Two
+				</h2>
+				<p>
+					Hendrerit tincidunt vero vel eorum claritatem. Soluta
+					legunt quod qui dolore typi. Vel dolore soluta qui odio
+					non. Sollemnes minim eorum feugiat nihil nobis. Gothica
+					dolor in legentis nihil quinta. Hendrerit tincidunt vero
+					vel eorum claritatem. Solutalegunt quod qui dolore typi.
+					Vel dolore soluta qui odio non. Sollemnes minim eorum
+					feugiat nihil nobis. Gothica dolor in legentis nihil quinta.
+					Hendrerit tincidunt vero vel eorum claritatem. Soluta
+					legunt quod qui dolore typi. Vel dolore soluta qui odio
+					non. Sollemnes minim eorum feugiat nihil nobis. Gothica
+					dolor in legentis nihil quinta. Hendrerit tincidunt vero
+					vel eorum claritatem. Solutalegunt quod qui dolore typi.
+					Vel dolore soluta qui odio non. Sollemnes minim eorum
+					feugiat nihil nobis. Gothica dolor in legentis nihil quinta.
+				</p>
+				<p>
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis. Iriure parum autem putamus
+					lectores duis. Quam sit quisme me zzril. Facer etiam
+					in lectores hendrerit etiam.Exerci lorem liber tincidunt
+					nostrud decima. Mutationem est zzril ipsum facer nobis.
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis. Iriure parum autem putamus
+					lectores duis. Quam sit quisme me zzril. Facer etiam
+					in lectores hendrerit etiam.Exerci lorem liber tincidunt
+					nostrud decima. Mutationem est zzril ipsum facer nobis.
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis. Iriure parum autem putamus
+					lectores duis. Quam sit quisme me zzril. Facer etiam
+					in lectores hendrerit etiam.Exerci lorem liber tincidunt
+					nostrud decima. Mutationem est zzril ipsum facer nobis.
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis. Iriure parum autem putamus
+					lectores duis. Quam sit quisme me zzril. Facer etiam
+					in lectores hendrerit etiam.Exerci lorem liber tincidunt
+					nostrud decima. Mutationem est zzril ipsum facer nobis.
+				</p>
+			</div>
+			
+			<div class="contentslider_slide" id="article3">
+				<h2>
+					Article Number Three
+				</h2>
+				<p>
+					Hendrerit tincidunt vero vel eorum claritatem. Soluta
+					legunt quod qui dolore typi. Vel dolore soluta qui odio
+					non. Sollemnes minim eorum feugiat nihil nobis. Gothica
+					dolor in legentis nihil quinta. Hendrerit tincidunt vero
+					vel eorum claritatem. Solutalegunt quod qui dolore typi.
+					Vel dolore soluta qui odio non. Sollemnes minim eorum
+					feugiat nihil nobis. Gothica dolor in legentis nihil quinta.
+					Hendrerit tincidunt vero vel eorum claritatem. Soluta
+					legunt quod qui dolore typi. Vel dolore soluta qui odio
+					non. Sollemnes minim eorum feugiat nihil nobis. Gothica
+					dolor in legentis nihil quinta. Hendrerit tincidunt vero
+					vel eorum claritatem. Solutalegunt quod qui dolore typi.
+					Vel dolore soluta qui odio non. Sollemnes minim eorum
+					feugiat nihil nobis. Gothica dolor in legentis nihil quinta.
+					Hendrerit tincidunt vero vel eorum claritatem. Soluta
+					legunt quod qui dolore typi. Vel dolore soluta qui odio
+					non. Sollemnes minim eorum feugiat nihil nobis. Gothica
+					dolor in legentis nihil quinta. Hendrerit tincidunt vero
+					vel eorum claritatem. Solutalegunt quod qui dolore typi.
+					Vel dolore soluta qui odio non. Sollemnes minim eorum
+					feugiat nihil nobis. Gothica dolor in legentis nihil quinta.
+					Hendrerit tincidunt vero vel eorum claritatem. Soluta
+					legunt quod qui dolore typi. Vel dolore soluta qui odio
+					non. Sollemnes minim eorum feugiat nihil nobis. Gothica
+					dolor in legentis nihil quinta. Hendrerit tincidunt vero
+					vel eorum claritatem. Solutalegunt quod qui dolore typi.
+					Vel dolore soluta qui odio non. Sollemnes minim eorum
+					feugiat nihil nobis. Gothica dolor in legentis nihil quinta.
+				</p>
+				<p>
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis. Iriure parum autem putamus
+					lectores duis. Quam sit quisme me zzril. Facer etiam
+					in lectores hendrerit etiam.Exerci lorem liber tincidunt
+					nostrud decima. Mutationem est zzril ipsum facer nobis.
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis. Iriure parum autem putamus
+					lectores duis. Quam sit quisme me zzril. Facer etiam
+					in lectores hendrerit etiam.Exerci lorem liber tincidunt
+					nostrud decima. Mutationem est zzril ipsum facer nobis.
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis. Iriure parum autem putamus
+					lectores duis. Quam sit quisme me zzril. Facer etiam
+					in lectores hendrerit etiam.Exerci lorem liber tincidunt
+					nostrud decima. Mutationem est zzril ipsum facer nobis.
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis. Iriure parum autem putamus
+					lectores duis. Quam sit quisme me zzril. Facer etiam
+					in lectores hendrerit etiam.Exerci lorem liber tincidunt
+					nostrud decima. Mutationem est zzril ipsum facer nobis.
+				</p>
+			</div>
+			
+			<div class="contentslider_slide" id="article4">
+				<h2>
+					Article Number Four
+				</h2>
+				<p>
+					Hendrerit tincidunt vero vel eorum claritatem. Soluta
+					legunt quod qui dolore typi. Vel dolore soluta qui odio
+					non. Sollemnes minim eorum feugiat nihil nobis. Gothica
+					dolor in legentis nihil quinta.
+				</p>
+				<p>
+					Iriure parum autem putamus lectores duis. Quam sit quis
+					me me zzril. Facer etiam in lectores hendrerit etiam.
+					Exerci lorem liber tincidunt nostrud decima. Mutationem
+					est zzril ipsum facer nobis.
+				</p>
+			</div>
+		</div>
+		
+	</body>
+</html>

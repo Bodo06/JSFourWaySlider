@@ -6,6 +6,7 @@ var SlideContentInUse = false;
             return;
         }
 
+		callback = (typeof(callback) != 'function')? function (elem) {} : callback;
         slideParentHeight = (typeof(slideParentHeight) == 'undefined' || slideParentHeight == null)? true : slideParentHeight;
         var that = this;
         var speed = Math.abs(parseInt($('#duration_input').val()));

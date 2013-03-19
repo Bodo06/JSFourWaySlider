@@ -13,6 +13,15 @@ var SlideContentInUse = false;
         element = $(element);
         var sibling = this.children();
 
+		// Append temp dir to
+		var tempdir = $('<div>').attr('id', 'slidecontent_temp_container').css({
+			'display': 'none',
+			'visibility': 'hidden',
+			'height': '0px',
+			'width': '0px',
+			'overflow': 'hidden'
+		}).appendTo($('body'));
+
         // Save margins of container in variables
         var startMarginX = Math.abs(parseInt(this.css('margin-left')));
         var startMarginY = Math.abs(parseInt(this.css('margin-top')));
@@ -51,7 +60,7 @@ var SlideContentInUse = false;
             });
         };
 
-        // If no slide is displayed yet, simply fade the given element in.
+		// If no slide is displayed yet, simply fade the given element in.
         if (0 == this.children().length) {
             this.append(resetCSSToStart(element.hide().detach()));
 
@@ -70,7 +79,9 @@ var SlideContentInUse = false;
 
         // switch for the single fade directions.
         if ('left' == position) {
-            var width = parseInt(element.outerWidth());
+			tempdir.append(element);
+			var width = parseInt(element.outerWidth());
+			element.detach();
 
             element.css({
                 'margin-left': ( startMarginX - width ) + 'px',
@@ -111,10 +122,13 @@ var SlideContentInUse = false;
             });
 
         } else if ('top' == position) {
+			tempdir.append(element);
+			var height = parseInt(element.outerHeight());
+			element.detach();
 
-            element.css({
+			element.css({
                 'margin-left': startMarginX + 'px',
-                'margin-top': ( startMarginY - parseInt(element.outerHeight()) )+ 'px'
+                'margin-top': ( startMarginY - height )+ 'px'
             });
             sibling.css({
                 'margin-left': startMarginX + 'px',
@@ -148,6 +162,7 @@ var SlideContentInUse = false;
             return;
         }
 
+		tempdir.remove();
         animateContainerHeight(element.outerHeight());
     };
 })(jQuery);

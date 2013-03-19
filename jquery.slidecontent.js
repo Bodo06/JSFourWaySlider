@@ -16,15 +16,6 @@ var SlideContentInUse = false;
 		element = $(element);
 		var sibling = this.children();
 
-		// Append temp dir to
-		var tempdir = $('<div>').attr('id', 'slidecontent_temp_container').css({
-			'display': 'none',
-			'visibility': 'hidden',
-			'height': '0px',
-			'width': '0px',
-			'overflow': 'hidden'
-		}).appendTo($('body'));
-
 		// Save margins of container in variables
 		var startMarginX = Math.abs(parseInt(this.css('margin-left')));
 		var startMarginY = Math.abs(parseInt(this.css('margin-top')));
@@ -79,6 +70,15 @@ var SlideContentInUse = false;
 		} else if (sibling.is(element)) {
 			return;
 		}
+
+		// Append temp dir to
+		var tempdir = $('<div>').attr('id', 'slidecontent_temp_container').css({
+			'display': 'none',
+			'visibility': 'hidden',
+			'height': '0px',
+			'width': '0px',
+			'overflow': 'hidden'
+		}).appendTo($('body'));
 
 		// switch for the single fade directions.
 		if ('left' == position) {

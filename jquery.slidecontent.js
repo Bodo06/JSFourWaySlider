@@ -1,5 +1,3 @@
-var SlideContentInUse = false;
-
 (function ($) {
 	$.fn.SlideContent = function (element, position, slideParentHeight, speed, easing, callback) {
 		var that = this;

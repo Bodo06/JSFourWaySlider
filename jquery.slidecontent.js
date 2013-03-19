@@ -74,6 +74,12 @@ var SlideContentInUse = false;
         // switch for the single fade directions.
         if ('left' == position) {
             var width = parseInt(element.outerWidth());
+			
+			// If the width of element could not be recieved, it will be assumed
+			// that element has the same width as sbling
+			if (0 == width) {
+				width = parseInt(sibling.outerWidth());
+			}
 
             element.css({
                 'margin-left': ( startMarginX - width ) + 'px',
@@ -114,7 +120,6 @@ var SlideContentInUse = false;
             });
 
         } else if ('top' == position) {
-
             element.css({
                 'margin-left': startMarginX + 'px',
                 'margin-top': ( startMarginY - parseInt(element.outerHeight()) )+ 'px'

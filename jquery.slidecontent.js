@@ -85,7 +85,27 @@
 		}).appendTo($('body'));
 
 		// switch for the single fade directions.
-		if ('left' == position) {
+		if ('show' == position) {
+			var width = parseInt(sibling.outerWidth());
+
+			element.css({
+				'margin-left': '0px',
+				'margin-top': startMarginY + 'px',
+				'float': 'left'
+			});
+			sibling.css('float', 'left');
+			this.append(element.detach());
+
+			$(sibling).fadeOut(speed, function () {
+				callback(resetCSSToStart(sibling.detach()));
+				$(element).fadeIn(speed, function () {
+					
+					that.data(SlideContentInUseAttr, false);
+					resetCSSToStart(element.css('float', 'none'));
+				});
+			});
+
+		} else if ('left' == position) {
 			tempdir.append(element);
 			var width = parseInt(element.outerWidth());
 			element.detach();

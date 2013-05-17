@@ -60,7 +60,7 @@
 
 		// If no slide is displayed yet, simply fade the given element in.
 		if (0 == this.children().length) {
-			this.append(resetCSSToStart(element.hide().detach()));
+			that.append(resetCSSToStart(element.hide().detach()));
 
 			element.fadeIn(speed, function () {
 				that.data(SlideContentInUseAttr, false);
@@ -85,7 +85,20 @@
 		}).appendTo($('body'));
 
 		// switch for the single fade directions.
-		if ('left' == position) {
+		if ('show' == position) {
+
+			element.css({
+				'margin-left': startMarginX + 'px',
+				'margin-top': startMarginY + 'px'
+			});
+
+			sibling.fadeOut(speed, function () {
+				sibling = sibling.detach().show();
+				that.append(element).fadeIn(speed, function () {
+					callback(resetCSSToStart(sibling));
+				})
+			})
+		} else if ('left' == position) {
 			tempdir.append(element);
 			var width = parseInt(element.outerWidth());
 			element.detach();
@@ -107,7 +120,7 @@
 				'float': 'left'
 			});
 
-			this.prepend(element.detach());
+			that.prepend(element.detach());
 
 			$(element).animate({ 'margin-left': startMarginX + 'px' }, speed, easing, function () {
 				that.data(SlideContentInUseAttr, false);
@@ -124,7 +137,7 @@
 				'float': 'left'
 			});
 			sibling.css('float', 'left');
-			this.append(element.detach());
+			that.append(element.detach());
 
 			$(sibling).animate({ 'margin-left': ( startMarginX - width ) + 'px' }, speed, easing, function () {
 				that.data(SlideContentInUseAttr, false);
@@ -146,7 +159,7 @@
 				'margin-top': 0 + 'px'
 			});
 
-			this.prepend(element.detach());
+			that.prepend(element.detach());
 
 			$(element).animate({ 'margin-top': startMarginY + 'px' }, speed, easing, function () {
 				that.data(SlideContentInUseAttr, false);
@@ -159,7 +172,7 @@
 				'margin-left': startMarginX + 'px',
 				'margin-top': '0px'
 			});
-			this.append(element.detach());
+			that.append(element.detach());
 
 			$(sibling).animate({ 'margin-top': ( startMarginY - parseInt(sibling.outerHeight()) ) + 'px' }, speed, easing, function () {
 				that.data(SlideContentInUseAttr, false);

@@ -30,7 +30,7 @@
 		 */
 		var animateContainerHeight = function (height) {
 			if (slideParentHeight) {
-				that.parent().animate({ 'height': +Math.abs(parseInt(height)) + 'px' }, speed, easing);
+				that.parent().css('height', 'auto').animate({ 'min-height': +Math.abs(parseInt(height)) + 'px' }, speed, easing);
 			}
 		};
 
@@ -83,10 +83,14 @@
 			'width': '0px',
 			'overflow': 'hidden'
 		}).appendTo($('body'));
+		
+		tempdir.append(element);
+		var height = parseInt(element.outerHeight());
+		var width = parseInt(element.outerWidth());
+		element.detach();
 
 		// switch for the single fade directions.
 		if ('show' == position) {
-
 			element.css({
 				'margin-left': startMarginX + 'px',
 				'margin-top': startMarginY + 'px'
@@ -99,10 +103,6 @@
 				})
 			})
 		} else if ('left' == position) {
-			tempdir.append(element);
-			var width = parseInt(element.outerWidth());
-			element.detach();
-
 			// If the width of element could not be recieved, it will be assumed
 			// that element has the same width as sbling
 			if (0 == width) {
@@ -129,8 +129,6 @@
 			});
 
 		} else if ('right' == position) {
-			var width = parseInt(sibling.outerWidth());
-
 			element.css({
 				'margin-left': '0px',
 				'margin-top': startMarginY + 'px',
@@ -146,10 +144,6 @@
 			});
 
 		} else if ('top' == position) {
-			tempdir.append(element);
-			var height = parseInt(element.outerHeight());
-			element.detach();
-
 			element.css({
 				'margin-left': startMarginX + 'px',
 				'margin-top': ( startMarginY - height ) + 'px'
@@ -167,7 +161,6 @@
 			});
 
 		} else if ('bottom' == position) {
-
 			element.css({
 				'margin-left': startMarginX + 'px',
 				'margin-top': '0px'
@@ -184,7 +177,7 @@
 		}
 
 		tempdir.remove();
-		animateContainerHeight(element.outerHeight());
+		animateContainerHeight(height);
 		that.data(SlideContentInUseAttr, false);
 	};
 })(jQuery);
